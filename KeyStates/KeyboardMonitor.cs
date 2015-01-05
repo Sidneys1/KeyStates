@@ -27,7 +27,6 @@ namespace KeyStates
 		public static KeyEvent KeyDown;
 		public static KeyEvent KeyUp;
 		public static KeyEvent KeyPressed;
-		public static KeyEvent TextKeyPressed;
 
 		#endregion
 
@@ -78,7 +77,6 @@ namespace KeyStates
 			else if (state == 0 && DownKeys.Contains(key))
 			{
 				DownKeys.Remove(key);
-				FireKeyPressed(key);
 				FireKeyUp(key);
 			}
 		}
@@ -95,11 +93,10 @@ namespace KeyStates
 
 		private static void FireKeyDown(VirtualKeyCode key)
 		{
-			var keyEventArgs = new KeyEventArgs(key);
-			KeyDown?.Invoke(keyEventArgs);
+			KeyDown?.Invoke(new KeyEventArgs(key));
 
 			if (key.ToChar() != '\0')
-				TextKeyPressed?.Invoke(keyEventArgs);
+				FireKeyPressed(key);
 		}
 
 		#region Methods
