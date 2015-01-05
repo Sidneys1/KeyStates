@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22310.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyStates", "KeyStates\KeyStates.csproj", "{CC4E8EE2-A1C4-4572-8BFA-ABB0848CA0F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyStates.ConsoleTest", "KeyStates.ConsoleTest\KeyStates.ConsoleTest.csproj", "{088A95FB-BB47-4653-B03D-A6812CFCC166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC4E8EE2-A1C4-4572-8BFA-ABB0848CA0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4E8EE2-A1C4-4572-8BFA-ABB0848CA0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4E8EE2-A1C4-4572-8BFA-ABB0848CA0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4E8EE2-A1C4-4572-8BFA-ABB0848CA0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
