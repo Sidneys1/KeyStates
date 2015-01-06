@@ -20,6 +20,36 @@ namespace KeyStates
 			set { Timer.Interval = value; }
 		}
 
+		public static bool IsShiftPressed
+		{
+			get
+			{
+				if (Timer.Enabled)
+					return DownKeys.Contains(VirtualKeyCode.SHIFT) || DownKeys.Contains(VirtualKeyCode.LSHIFT) || DownKeys.Contains(VirtualKeyCode.RSHIFT);
+				throw new NotRunningException("KeyboardMonitor is not currently running.");
+			}
+		}
+
+		public static bool IsControlPressed
+		{
+			get
+			{
+				if (Timer.Enabled)
+					return DownKeys.Contains(VirtualKeyCode.CONTROL) || DownKeys.Contains(VirtualKeyCode.LCONTROL) || DownKeys.Contains(VirtualKeyCode.RCONTROL);
+				throw new NotRunningException("KeyboardMonitor is not currently running.");
+			}
+		}
+
+		public static bool IsAltPressed
+		{
+			get
+			{
+				if (Timer.Enabled)
+					return DownKeys.Contains(VirtualKeyCode.MENU) || DownKeys.Contains(VirtualKeyCode.LMENU)|| DownKeys.Contains(VirtualKeyCode.RMENU);
+				throw new NotRunningException("KeyboardMonitor is not currently running.");
+			}
+		}
+
 		#endregion
 
 		#region Events
@@ -95,7 +125,7 @@ namespace KeyStates
 		{
 			KeyDown?.Invoke(new KeyEventArgs(key));
 
-			if (key.ToChar() != '\0')
+			if (!IsControlPressed && !IsAltPressed && key.ToChar() != '\0')
 				FireKeyPressed(key);
 		}
 
