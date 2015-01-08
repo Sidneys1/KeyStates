@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace KeyStates
@@ -52,5 +53,18 @@ namespace KeyStates
 
 		[DllImport("user32.dll")]
 		public static extern int ToUnicode(VirtualKeyCode wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr, SizeConst = 64)] StringBuilder pwszBuff, int cchBuff, uint wFlags);
+
+		[DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+		public static extern IntPtr GetModuleHandle(string lpModuleName);
+
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern IntPtr SetWindowsHookEx(HookType hookType, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+		[DllImport("user32.dll", SetLastError = true)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		public static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+		[DllImport("user32.dll")]
+		public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, [In]KBDLLHOOKSTRUCT lParam);
 	}
 }

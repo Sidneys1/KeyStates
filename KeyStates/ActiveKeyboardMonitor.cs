@@ -5,7 +5,7 @@ using System.Timers;
 
 namespace KeyStates
 {
-	public static class KeyboardMonitor
+	public static class ActiveKeyboardMonitor
 	{
 		#region Vars and Properties
 
@@ -26,7 +26,7 @@ namespace KeyStates
 			{
 				if (Timer.Enabled)
 					return DownKeys.Contains(VirtualKeyCode.SHIFT) || DownKeys.Contains(VirtualKeyCode.LSHIFT) || DownKeys.Contains(VirtualKeyCode.RSHIFT);
-				throw new NotRunningException("KeyboardMonitor is not currently running.");
+				throw new KeyboardMonitorException("KeyboardMonitor is not currently running.");
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace KeyStates
 			{
 				if (Timer.Enabled)
 					return DownKeys.Contains(VirtualKeyCode.CONTROL) || DownKeys.Contains(VirtualKeyCode.LCONTROL) || DownKeys.Contains(VirtualKeyCode.RCONTROL);
-				throw new NotRunningException("KeyboardMonitor is not currently running.");
+				throw new KeyboardMonitorException("KeyboardMonitor is not currently running.");
 			}
 		}
 
@@ -46,7 +46,7 @@ namespace KeyStates
 			{
 				if (Timer.Enabled)
 					return DownKeys.Contains(VirtualKeyCode.MENU) || DownKeys.Contains(VirtualKeyCode.LMENU)|| DownKeys.Contains(VirtualKeyCode.RMENU);
-				throw new NotRunningException("KeyboardMonitor is not currently running.");
+				throw new KeyboardMonitorException("KeyboardMonitor is not currently running.");
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace KeyStates
 
 		#endregion
 
-		static KeyboardMonitor()
+		static ActiveKeyboardMonitor()
 		{
 			Timer.Elapsed += Elapsed;
 		}
