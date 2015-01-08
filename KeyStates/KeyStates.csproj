@@ -44,6 +44,7 @@
     <Compile Include="KeyEventDelegate.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="NotRunningException.cs" />
+    <Compile Include="PassiveKeyboardMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirtualKeyCode.cs" />
   </ItemGroup>
