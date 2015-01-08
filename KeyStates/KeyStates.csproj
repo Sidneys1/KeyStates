@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="ActiveKeyboardMonitor.cs" />
     <Compile Include="HookType.cs" />
+    <Compile Include="KeyboardHookProc.cs" />
+    <Compile Include="KeyboardHookStruct.cs" />
+    <Compile Include="KeyboardHookType.cs" />
     <Compile Include="KeyEventArgs.cs" />
     <Compile Include="KeyEventDelegate.cs" />
     <Compile Include="NativeMethods.cs" />

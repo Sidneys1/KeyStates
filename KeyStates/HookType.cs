@@ -1,10 +1,5 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace KeyStates
+﻿namespace KeyStates
 {
-	internal delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, [In] KBDLLHOOKSTRUCT lParam);
-
 	internal enum HookType
 	{
 		// ReSharper disable InconsistentNaming
@@ -25,28 +20,4 @@ namespace KeyStates
 		WH_MOUSE_LL = 14
 		// ReSharper restore InconsistentNaming
 	}
-
-	// ReSharper disable InconsistentNaming
-	[StructLayout(LayoutKind.Sequential)]
-	public class KBDLLHOOKSTRUCT
-	{
-		public uint vkCode;
-		public uint scanCode;
-		public KBDLLHOOKSTRUCTFlags flags;
-		public uint time;
-		public UIntPtr dwExtraInfo;
-	}
-	// ReSharper enable InconsistentNaming
-
-	// ReSharper disable InconsistentNaming
-	[Flags]
-	public enum KBDLLHOOKSTRUCTFlags : uint
-
-	{
-		LLKHF_EXTENDED = 0x01,
-		LLKHF_INJECTED = 0x10,
-		LLKHF_ALTDOWN = 0x20,
-		LLKHF_UP = 0x80,
-	}
-	// ReSharper restore InconsistentNaming
 }

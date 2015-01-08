@@ -1,73 +1,53 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 
 namespace KeyStates
 {
-	public static class PassiveKeyboardMonitor
+	public class PassiveKeyboardMonitor
 	{
-		private static readonly LowLevelKeyboardProc CallbackHookProc;
-		private static IntPtr _hookPtr = IntPtr.Zero;
+		private readonly IntPtr _hookHandle;
+		// ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
+		private readonly KeyboardHookProc _hookProc;
 
-		#region Events
+		public event KeyEvent KeyDown;
+		public event KeyEvent KeyUp;
 
-		public static KeyEvent KeyDown;
-		public static KeyEvent KeyUp;
-		public static KeyEvent KeyPressed;
+		public PassiveKeyboardMonitor()
+		{
+			var hInstance = NativeMethods.LoadLibrary("user32.dll");
+
+			_hookProc = HookProc;
+			_hookHandle = NativeMethods.SetWindowsHookEx(HookType.WH_KEYBOARD_LL, _hookProc, hInstance, 0);
+		}
+
+		~PassiveKeyboardMonitor()
+		{
+			NativeMethods.UnhookWindowsHookEx(_hookHandle);
+		}
+
+		private int HookProc(int code, int wParam, ref KeyboardHookStruct lParam)
+		{
+			if (code < 0) return NativeMethods.CallNextHookEx(_hookHandle, code, wParam, ref lParam);
+
+			var key = (VirtualKeyCode)lParam.vkCode;
+			var args = new KeyEventArgs(key);
+
+			switch ((KeyboardHookType)wParam)
+			{
+				case KeyboardHookType.WM_KEYDOWN:
+				case KeyboardHookType.WM_SYSKEYDOWN:
+					KeyDown?.BeginInvoke(args, null, null);
+					break;
+				case KeyboardHookType.WM_KEYUP:
+				case KeyboardHookType.WM_SYSKEYUP:
+					KeyUp?.BeginInvoke(args, null, null);
+					break;
+			}
+
+			return NativeMethods.CallNextHookEx(_hookHandle, code, wParam, ref lParam);
+		}
+
+		#region DLL Imports
 
 		#endregion
-
-		static PassiveKeyboardMonitor()
-		{
-			CallbackHookProc = CallbackFunction;
-		}
-
-		#region Methods
-
-		public static void Start()
-		{
-			//Timer.Start();
-			using (var process = Process.GetCurrentProcess())
-			using (var module = process.MainModule)
-			{
-				var hModule =  NativeMethods.GetModuleHandle(module.ModuleName);
-				_hookPtr = NativeMethods.SetWindowsHookEx(HookType.WH_KEYBOARD_LL, CallbackHookProc, hModule, 0);
-
-				if (_hookPtr == IntPtr.Zero)
-					throw new KeyboardMonitorException("Hook failed to start.");
-			}
-		}
-
-		public static void Stop()
-		{
-
-			if (_hookPtr != IntPtr.Zero && NativeMethods.UnhookWindowsHookEx(_hookPtr))
-				_hookPtr = IntPtr.Zero;
-			else
-				throw new KeyboardMonitorException("Hook failed to stop.");
-		}
-
-		#endregion
-
-		private static IntPtr CallbackFunction(int nCode, IntPtr wParam, [In] KBDLLHOOKSTRUCT lParam)
-		{
-			if (nCode < 0)
-			{
-				return NativeMethods.CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
-			}
-
-			var keyPressed = (VirtualKeyCode)lParam.vkCode;
-
-			if ((lParam.flags & KBDLLHOOKSTRUCTFlags.LLKHF_UP) == KBDLLHOOKSTRUCTFlags.LLKHF_UP)
-			{
-				KeyUp?.Invoke(new KeyEventArgs(keyPressed));
-			}
-			else
-			{
-				KeyDown?.Invoke(new KeyEventArgs(keyPressed));
-			}
-
-			return NativeMethods.CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
-		}
-    }
+	}
 }

@@ -5,6 +5,7 @@ namespace KeyStates.ConsoleTest
 	class Program
 	{
 		private static int _x;
+		[STAThread]
 		static void Main()
 		{
 			const bool active = false;
@@ -53,21 +54,23 @@ namespace KeyStates.ConsoleTest
 			}
 			else
 			{
-				PassiveKeyboardMonitor.KeyDown += args => {
+				var pkm = new PassiveKeyboardMonitor();
+
+				pkm.KeyDown += args => {
 					Console.SetCursorPosition(0, 3);
 					Console.ForegroundColor = ConsoleColor.DarkGray;
 					Console.WriteLine("{0,9}: {1,-20}", "Key Down", args.Key);
 				};
-				PassiveKeyboardMonitor.KeyUp += args => {
+				pkm.KeyUp += args => {
 					Console.SetCursorPosition(0, 2);
 					Console.ForegroundColor = ConsoleColor.DarkGray;
 					Console.WriteLine("{0,9}: {1,-20}", "Key Up", args.Key);
 				};
 
-				PassiveKeyboardMonitor.Start();
+				//pkm.Start();
 
 				Console.ReadLine();
-				PassiveKeyboardMonitor.Stop();
+				//pkm.Stop();
 			}
 		}
 	}

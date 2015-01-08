@@ -6,6 +6,13 @@ namespace KeyStates
 {
 	internal static class NativeMethods
 	{
+		// ReSharper disable InconsistentNaming
+		public const int WM_KEYDOWN = 0x100;
+		public const int WM_KEYUP = 0x101;
+		public const int WM_SYSKEYDOWN = 0x104;
+		public const int WM_SYSKEYUP = 0x105;
+		// ReSharper restore InconsistentNaming
+
 		/// <summary>
 		/// The GetAsyncKeyState function determines whether a key is up or down at the time the function is called, and whether the key was pressed after a previous call to GetAsyncKeyState. (See: http://msdn.microsoft.com/en-us/library/ms646293(VS.85).aspx)
 		/// </summary>
@@ -58,13 +65,17 @@ namespace KeyStates
 		public static extern IntPtr GetModuleHandle(string lpModuleName);
 
 		[DllImport("user32.dll", SetLastError = true)]
-		public static extern IntPtr SetWindowsHookEx(HookType hookType, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+		public static extern IntPtr SetWindowsHookEx(HookType hookType, KeyboardHookProc lpfn, IntPtr hMod, uint dwThreadId);
 
 		[DllImport("user32.dll", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
 		[DllImport("user32.dll")]
-		public static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, [In]KBDLLHOOKSTRUCT lParam);
+		public static extern int CallNextHookEx(IntPtr hhk, int nCode, int wParam, ref KeyboardHookStruct lParam);
+
+		[DllImport("kernel32.dll")]
+		public static extern IntPtr LoadLibrary(string lpFileName);
+
 	}
 }
