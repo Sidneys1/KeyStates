@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace KeyStates
 {
 	public enum VirtualKeyCode : byte  //: UInt16
@@ -38,7 +40,6 @@ namespace KeyStates
 		/// <summary>
 		/// BACKSPACE key
 		/// </summary>
-		[Char('\b')]
 		BACK = 0x08,
 
 		/// <summary>
@@ -152,7 +153,6 @@ namespace KeyStates
 		/// <summary>
 		/// SPACEBAR
 		/// </summary>
-		[Char(' ')]
 		SPACE = 0x20,
 
 		/// <summary>
@@ -235,61 +235,51 @@ namespace KeyStates
 		/// <summary>
 		/// 0 key
 		/// </summary>
-		[Char('0', ')')]
 		VK_0 = 0x30,
 
 		/// <summary>
 		/// 1 key
 		/// </summary>
-		[Char('1', '!')]
 		VK_1 = 0x31,
 
 		/// <summary>
 		/// 2 key
 		/// </summary>
-		[Char('2', '@')]
 		VK_2 = 0x32,
 
 		/// <summary>
 		/// 3 key
 		/// </summary>
-		[Char('3', '#')]
 		VK_3 = 0x33,
 
 		/// <summary>
 		/// 4 key
 		/// </summary>
-		[Char('4', '$')]
 		VK_4 = 0x34,
 
 		/// <summary>
 		/// 5 key
 		/// </summary>
-		[Char('5', '%')]
 		VK_5 = 0x35,
 
 		/// <summary>
 		/// 6 key
 		/// </summary>
-		[Char('6', '^')]
 		VK_6 = 0x36,
 
 		/// <summary>
 		/// 7 key
 		/// </summary>
-		[Char('7', '&')]
 		VK_7 = 0x37,
 
 		/// <summary>
 		/// 8 key
 		/// </summary>
-		[Char('8', '*')]
 		VK_8 = 0x38,
 
 		/// <summary>
 		/// 9 key
 		/// </summary>
-		[Char('9', '(')]
 		VK_9 = 0x39,
 
 		#endregion
@@ -303,157 +293,131 @@ namespace KeyStates
 		/// <summary>
 		/// A key
 		/// </summary>
-		[Char('a')]
 		VK_A = 0x41,
 
 		/// <summary>
 		/// B key
 		/// </summary>
-		[Char('b')]
 		VK_B = 0x42,
 
 		/// <summary>
 		/// C key
 		/// </summary>
-		[Char('c')]
 		VK_C = 0x43,
 
 		/// <summary>
 		/// D key
 		/// </summary>
-		[Char('d')]
 		VK_D = 0x44,
 
 		/// <summary>
 		/// E key
 		/// </summary>
-		[Char('e')]
 		VK_E = 0x45,
 
 		/// <summary>
 		/// F key
 		/// </summary>
-		[Char('f')]
 		VK_F = 0x46,
 
 		/// <summary>
 		/// G key
 		/// </summary>
-		[Char('g')]
 		VK_G = 0x47,
 
 		/// <summary>
 		/// H key
 		/// </summary>
-		[Char('h')]
 		VK_H = 0x48,
 
 		/// <summary>
 		/// I key
 		/// </summary>
-		[Char('i')]
 		VK_I = 0x49,
 
 		/// <summary>
 		/// J key
 		/// </summary>
-		[Char('j')]
 		VK_J = 0x4A,
 
 		/// <summary>
 		/// K key
 		/// </summary>
-		[Char('k')]
 		VK_K = 0x4B,
 
 		/// <summary>
 		/// L key
 		/// </summary>
-		[Char('l')]
 		VK_L = 0x4C,
 
 		/// <summary>
 		/// M key
 		/// </summary>
-		[Char('m')]
 		VK_M = 0x4D,
 
 		/// <summary>
 		/// N key
 		/// </summary>
-		[Char('n')]
 		VK_N = 0x4E,
 
 		/// <summary>
 		/// O key
 		/// </summary>
-		[Char('o')]
 		VK_O = 0x4F,
 
 		/// <summary>
 		/// P key
 		/// </summary>
-		[Char('p')]
 		VK_P = 0x50,
 
 		/// <summary>
 		/// Q key
 		/// </summary>
-		[Char('q')]
 		VK_Q = 0x51,
 
 		/// <summary>
 		/// R key
 		/// </summary>
-		[Char('r')]
 		VK_R = 0x52,
 
 		/// <summary>
 		/// S key
 		/// </summary>
-		[Char('s')]
 		VK_S = 0x53,
 
 		/// <summary>
 		/// T key
 		/// </summary>
-		[Char('t')]
 		VK_T = 0x54,
 
 		/// <summary>
 		/// U key
 		/// </summary>
-		[Char('u')]
 		VK_U = 0x55,
 
 		/// <summary>
 		/// V key
 		/// </summary>
-		[Char('v')]
 		VK_V = 0x56,
 
 		/// <summary>
 		/// W key
 		/// </summary>
-		[Char('w')]
 		VK_W = 0x57,
 
 		/// <summary>
 		/// X key
 		/// </summary>
-		[Char('x')]
 		VK_X = 0x58,
 
 		/// <summary>
 		/// Y key
 		/// </summary>
-		[Char('y')]
 		VK_Y = 0x59,
 
 		/// <summary>
 		/// Z key
 		/// </summary>
-		[Char('z')]
 		VK_Z = 0x5A,
 
 		#endregion
@@ -540,13 +504,11 @@ namespace KeyStates
 		/// <summary>
 		/// Multiply key
 		/// </summary>
-		[Char('*')]
 		MULTIPLY = 0x6A,
 
 		/// <summary>
 		/// Add key
 		/// </summary>
-		[Char('+')]
 		ADD = 0x6B,
 
 		/// <summary>
@@ -557,19 +519,16 @@ namespace KeyStates
 		/// <summary>
 		/// Subtract key
 		/// </summary>
-		[Char('-')]
 		SUBTRACT = 0x6D,
 
 		/// <summary>
 		/// Decimal key
 		/// </summary>
-		[Char('.')]
 		DECIMAL = 0x6E,
 
 		/// <summary>
 		/// Divide key
 		/// </summary>
-		[Char('/')]
 		DIVIDE = 0x6F,
 
 		#endregion
@@ -851,7 +810,6 @@ namespace KeyStates
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the ';:' key 
 		/// </summary>
-		[Char(';', ':')]
 		OEM_1 = 0xBA,
 
 		#region Various Symbols
@@ -859,37 +817,31 @@ namespace KeyStates
 		/// <summary>
 		/// Windows 2000/XP: For any country/region, the '+' key
 		/// </summary>
-		[Char('=', '+')]
 		OEM_PLUS = 0xBB,
 
 		/// <summary>
 		/// Windows 2000/XP: For any country/region, the ',' key
 		/// </summary>
-		[Char(',', '<')]
 		OEM_COMMA = 0xBC,
 
 		/// <summary>
 		/// Windows 2000/XP: For any country/region, the '-' key
 		/// </summary>
-		[Char('-', '_')]
 		OEM_MINUS = 0xBD,
 
 		/// <summary>
 		/// Windows 2000/XP: For any country/region, the '.' key
 		/// </summary>
-		[Char('.', '>')]
 		OEM_PERIOD = 0xBE,
 
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the '/?' key 
 		/// </summary>
-		[Char('/', '?')]
 		OEM_2 = 0xBF,
 
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the '`~' key 
 		/// </summary>
-		[Char('`', '~')]
 		OEM_3 = 0xC0,
 
 		#endregion
@@ -908,25 +860,21 @@ namespace KeyStates
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the '[{' key
 		/// </summary>
-		[Char('[', '{')]
 		OEM_4 = 0xDB,
 
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the '\|' key
 		/// </summary>
-		[Char('\\', '|')]
 		OEM_5 = 0xDC,
 
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the ']}' key
 		/// </summary>
-		[Char(']', '}')]
 		OEM_6 = 0xDD,
 
 		/// <summary>
 		/// Used for miscellaneous characters; it can vary by keyboard. Windows 2000/XP: For the US standard keyboard, the 'single-quote/double-quote' key
 		/// </summary>
-		[Char('\'', '"')]
 		OEM_7 = 0xDE,
 
 		#endregion
@@ -1021,18 +969,40 @@ namespace KeyStates
 		/// </summary>
 		OEM_CLEAR = 0xFE,
 		// ReSharper restore InconsistentNaming
-
 	}
 
 	public static class VirtualKeyCodeExtension
 	{
-		public static char ToChar(this VirtualKeyCode key, bool shift = false)
+		public static char ToChar(this VirtualKeyCode key, bool shift, bool altGr)
 		{
-			var type = key.GetType();
-			var memInfo = type.GetMember(key.ToString());
-			var attributes = memInfo[0].GetCustomAttributes(typeof(CharAttribute), false);
-			var att = (attributes.Length > 0) ? (CharAttribute)attributes[0] : null;
-			return (shift ? att?.ShiftChar : att?.Char) ?? '\0';
+			var buf = new StringBuilder(256);
+			var keyboardState = new byte[256];
+			if (shift)
+				keyboardState[(int)VirtualKeyCode.SHIFT] = 0xff;
+			if (altGr)
+			{
+				keyboardState[(int)VirtualKeyCode.CONTROL] = 0xff;
+				keyboardState[(int)VirtualKeyCode.MENU] = 0xff;
+			}
+			var result = NativeMethods.ToUnicode(key, 0, keyboardState, buf, 256, 0);
+
+			switch (result)
+			{
+				case 1:
+					return buf.ToString()[0];
+				//case -1:
+					// Dead key
+				//case 0:
+					// No Unicode Value
+				default:
+					// Unexpected return value
+					return '\0';
+			}
+		}
+
+		public static bool IsTextKey(this VirtualKeyCode key)
+		{
+			return key.ToChar(KeyboardMonitor.IsShiftPressed, KeyboardMonitor.IsKeyPressed(VirtualKeyCode.RMENU)) != '\0';
 		}
 	}
 }

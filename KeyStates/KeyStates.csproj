@@ -39,10 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharAttribute.cs" />
     <Compile Include="KeyboardMonitor.cs" />
     <Compile Include="KeyEventArgs.cs" />
     <Compile Include="KeyEventDelegate.cs" />
+    <Compile Include="MapVirtualKeyMapTypes.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="NotRunningException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

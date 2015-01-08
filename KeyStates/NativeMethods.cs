@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace KeyStates
 {
@@ -49,5 +50,8 @@ namespace KeyStates
 
 		[DllImport("USER32.dll")]
 		public static extern short GetKeyState(VirtualKeyCode nVirtKey);
+
+		[DllImport("user32.dll")]
+		public static extern int ToUnicode(VirtualKeyCode wVirtKey, uint wScanCode, byte[] lpKeyState, [Out, MarshalAs(UnmanagedType.LPWStr, SizeConst = 64)] StringBuilder pwszBuff, int cchBuff, uint wFlags);
 	}
 }

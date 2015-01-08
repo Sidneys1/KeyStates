@@ -12,7 +12,7 @@ namespace KeyStates
 		private static readonly byte[] Keys = new byte[256];
 		private static readonly List<VirtualKeyCode> DownKeys = new List<VirtualKeyCode>();
 
-		private static readonly Timer Timer = new Timer(10);
+		private static readonly Timer Timer = new Timer(25);
 
 		public static double Interval
 		{
@@ -125,7 +125,7 @@ namespace KeyStates
 		{
 			KeyDown?.Invoke(new KeyEventArgs(key));
 
-			if (!IsControlPressed && !IsAltPressed && key.ToChar() != '\0')
+			if (!IsControlPressed && !IsAltPressed && key.IsTextKey())
 				FireKeyPressed(key);
 		}
 

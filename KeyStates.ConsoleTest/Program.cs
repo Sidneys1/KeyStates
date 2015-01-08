@@ -7,25 +7,26 @@ namespace KeyStates.ConsoleTest
 		private static int _x;
 		static void Main()
 		{
-
 			KeyboardMonitor.KeyDown += args =>
 			{
 				Console.SetCursorPosition(0, 3);
 				Console.ForegroundColor = ConsoleColor.DarkGray;
-				Console.WriteLine("Key Down:\t{0}\t\t\t", args.Key);
+				Console.WriteLine("{0,9}: {1,-20}", "Key Down", args.Key);
 			};
 			KeyboardMonitor.KeyUp += args =>
 			{
 				Console.SetCursorPosition(0, 2);
 				Console.ForegroundColor = ConsoleColor.DarkGray;
-				Console.WriteLine("Key Up:\t\t{0}\t\t\t", args.Key);
+				Console.WriteLine("{0,9}: {1,-20}", "Key Up", args.Key);
 			};
 			KeyboardMonitor.KeyPressed += args =>
 			{
 				Console.SetCursorPosition(0, 1);
 				Console.ForegroundColor = ConsoleColor.Gray;
-				var arg0 = args.Key.ToChar(KeyboardMonitor.IsShiftPressed);
-				Console.WriteLine("Text:\t\t{0}\t\t\t", arg0);
+
+				var arg0 = args.Key.ToChar(KeyboardMonitor.IsShiftPressed, KeyboardMonitor.IsKeyPressed(VirtualKeyCode.RMENU));
+
+				Console.WriteLine("{0,9}: {1,-20}", "Character", arg0);
 
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.SetCursorPosition(_x++, 0);
