@@ -5,6 +5,9 @@ using System.Timers;
 
 namespace KeyStates
 {
+	/// <summary>
+	/// An Active Keyboard Monitor (Uses a Polling Timer)
+	/// </summary>
 	public static class ActiveKeyboardMonitor
 	{
 		#region Vars and Properties
@@ -50,6 +53,16 @@ namespace KeyStates
 			}
 		}
 
+		public static bool IsAltGrPressed
+		{
+			get
+			{
+				if (Timer.Enabled)
+					return DownKeys.Contains(VirtualKeyCode.RMENU);
+				throw new KeyboardMonitorException("KeyboardMonitor is not currently running.");
+			}
+		}
+
 		#endregion
 
 		#region Events
@@ -60,10 +73,16 @@ namespace KeyStates
 
 		#endregion
 
+		#region Ctor
+
 		static ActiveKeyboardMonitor()
 		{
 			Timer.Elapsed += Elapsed;
 		}
+
+		#endregion
+
+		#region Private Methods
 
 		private static void Elapsed(object sender, ElapsedEventArgs e)
 		{
@@ -85,12 +104,12 @@ namespace KeyStates
 
 			for (var index = 0; index < Keys.Length; index++)
 			{
-				var key = (VirtualKeyCode)index;
+				var key = (VirtualKeyCode) index;
 				if (key == VirtualKeyCode.CONTROL ||
-					key == VirtualKeyCode.SHIFT ||
-					key == VirtualKeyCode.LSHIFT ||
-					key == VirtualKeyCode.RSHIFT ||
-					key == VirtualKeyCode.MENU)
+				    key == VirtualKeyCode.SHIFT ||
+				    key == VirtualKeyCode.LSHIFT ||
+				    key == VirtualKeyCode.RSHIFT ||
+				    key == VirtualKeyCode.MENU)
 					continue;
 				ProcessKey(key);
 			}
@@ -98,7 +117,7 @@ namespace KeyStates
 
 		private static void ProcessKey(VirtualKeyCode key)
 		{
-			var state = Keys[(byte)key] & 0x80;
+			var state = Keys[(byte) key] & 0x80;
 			if (state != 0 && !DownKeys.Contains(key))
 			{
 				DownKeys.Add(key);
@@ -128,6 +147,8 @@ namespace KeyStates
 			if (!IsControlPressed && !IsAltPressed && key.IsTextKey())
 				FireKeyPressed(key);
 		}
+
+		#endregion
 
 		#region Methods
 

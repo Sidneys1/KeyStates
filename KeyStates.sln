@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyStates", "KeyStates\KeyS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyStates.ConsoleTest", "KeyStates.ConsoleTest\KeyStates.ConsoleTest.csproj", "{088A95FB-BB47-4653-B03D-A6812CFCC166}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyStates.WpfTest", "KeyStates.WpfTest\KeyStates.WpfTest.csproj", "{ADECB9B1-02CA-41C7-BB75-1ED8541B59E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{088A95FB-BB47-4653-B03D-A6812CFCC166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADECB9B1-02CA-41C7-BB75-1ED8541B59E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADECB9B1-02CA-41C7-BB75-1ED8541B59E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADECB9B1-02CA-41C7-BB75-1ED8541B59E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADECB9B1-02CA-41C7-BB75-1ED8541B59E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

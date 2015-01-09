@@ -1002,7 +1002,7 @@ namespace KeyStates
 
 		public static bool IsTextKey(this VirtualKeyCode key)
 		{
-			return key.ToChar(ActiveKeyboardMonitor.IsShiftPressed, ActiveKeyboardMonitor.IsKeyPressed(VirtualKeyCode.RMENU)) != '\0';
+			return key.ToChar(false, false) != '\0';
 		}
 	}
 }
