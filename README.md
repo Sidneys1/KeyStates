@@ -7,7 +7,7 @@ A Keyboard State Watcher for C# and .NET
 
 `using KeyStates;`
 
-There are two KeyboardMonitor classes, ActiveKeyboardMonitor and PassiveKeyboardMonitor. The Active monitor constantly polls the system for keypresses, while the Passive monitor hooks in to the system message loop, but cannot be used in console apps.
+There are two KeyboardMonitor classes, `ActiveKeyboardMonitor` and `PassiveKeyboardMonitor`. The Active monitor constantly polls the system for keypresses, while the Passive monitor hooks in to the system message loop, but cannot be used in console apps.
 
 You can subscribe to any of these events:
 * `xxxKeyboardMonitor.KeyDown`, fired when any key is depressed.
